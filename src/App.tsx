@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 //import reactLogo from "./assets/react.svg";
 import "./App.css";
+import "./components/route/Route";
+import { NewPage } from "./NewPage";
 
 export const App = () => {
   //const [count, setCount] = useState(0);
@@ -28,7 +31,15 @@ export const App = () => {
 
   return (
     <>
-      <header>
+      {/* ルーティングをゆうこか */}
+      <BrowserRouter>
+        <Link to="/newpage">newpage</Link>
+
+        <Routes>
+          <Route path="/newpage" element={<NewPage />} />
+        </Routes>
+      </BrowserRouter>
+      {/* <header>
         <title>
           <h1>React Bulletion 01</h1>
         </title>
@@ -44,7 +55,8 @@ export const App = () => {
           </ul>
         </section>
       </main>
-      <footer>footer</footer>
+      <footer>footer</footer> */}
+      {/* Routerコンポーネント内で定義したURLとそれに対応するコンポーネントへ切り替わるようになります。BrowserRouterコンポーネント外のコンポーネントへは切り替わることはりません。 */}
     </>
   );
 };

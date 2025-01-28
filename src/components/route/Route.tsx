@@ -1,8 +1,13 @@
 import { useRoutes } from "react-router-dom";
+import Home from "../../Home";
 import NewPage from "../../NewPage";
 
 const Route = () => {
   const routingConfig = [
+    {
+      path: "/",
+      Element: <Home />,
+    },
     {
       path: "/newpage",
       Element: <NewPage />,

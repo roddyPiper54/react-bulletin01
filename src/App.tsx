@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 //import reactLogo from "./assets/react.svg";
-import "./App.css";
+// import "./App.css";
 import "./components/route/Route";
+import { Home } from "./Home";
 import { NewPage } from "./NewPage";
 
 export const App = () => {
@@ -33,11 +34,44 @@ export const App = () => {
     <>
       {/* ルーティングをゆうこか */}
       <BrowserRouter>
-        <Link to="/newpage">newpage</Link>
-
-        <Routes>
-          <Route path="/newpage" element={<NewPage />} />
-        </Routes>
+        <div>
+          <header className="l-header">
+            <div className="container">
+              <div className="logo">React Bulletion 01</div>
+            </div>
+          </header>
+          <nav className="gNavWrapper">
+            <div className="container">
+              <ul className="gNav">
+                <li>
+                  <Link to="/">home</Link>
+                </li>
+                <li>
+                  <Link to="/newpage">newpage</Link>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <main>
+            <section className="container">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/newpage" element={<NewPage />} />
+              </Routes>
+              <h1 className="title">スレッド一覧</h1>
+              <section>
+                <ul className="threadlist">
+                  {threads.map((thread, index) => (
+                    <li key={index}>{thread.title}</li>
+                  ))}
+                </ul>
+              </section>
+            </section>
+          </main>
+          <footer className="l-footer">
+            <div className="container">footer</div>
+          </footer>
+        </div>
       </BrowserRouter>
       {/* <header>
         <title>

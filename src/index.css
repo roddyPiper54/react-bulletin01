@@ -1,3 +1,4 @@
+/*
 :root {
   background-color: #242424;
   color: rgba(255, 255, 255, 0.87);
@@ -58,9 +59,66 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+} */
+body {
+  /* background-color: #000; */
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* layout */
+.l-header {
+  background-color: #deebec;
+  background-color: #bed9dd;
+  background-color: #aecfd0;
+  background-color: #73b3b2;
+  background-color: #3c979f;
+  padding: 10px;
+}
+
+.l-footer {
+  background-color: #ddd;
+  padding: 5px 0;
 }
 
 /* component */
+.logo {
+  color: #fff;
+}
+.title {
+  color: #444;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+/* component */
+.gNavWrapper {
+  background-color: #73b3b2;
+}
+.gNav {
+  color: #fff;
+  display: flex;
+  margin: 0;
+}
+.gNav > li {
+  padding: 0;
+}
+.gNav > li > a {
+  color: #fff;
+  display: inline-block;
+  padding: 5px 10px;
+  text-decoration: none;
+}
+.gNav > li > a:hover {
+  background-color: #aecfd0;
+}
 
 .threadlist {
   list-style: none;
@@ -72,7 +130,6 @@ button:focus-visible {
   border: solid 1px #73b3b2;
   border-radius: 4px;
   padding: 8px;
-  width: 100%;
 }
 
 .threadlist > li + li {

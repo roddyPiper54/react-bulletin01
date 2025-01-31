@@ -32,7 +32,6 @@ export const App = () => {
 
   return (
     <>
-      {/* ルーティングをゆうこか */}
       <BrowserRouter>
         <div>
           <header className="l-header">

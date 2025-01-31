@@ -3,16 +3,22 @@ import { useState } from "react";
 export const NewPage = () => {
   const [thread, setThread] = useState("");
 
-  //スレッド作成用関数
-  // const createThread = (formData: string) => {
-  //   //スレッド名取得
-  //   const threadName = formData.get("threadName");
-  //   alert(`You searched for '${threadName}'`);
+  //スレッド一覧取得
 
-  //   setThread(threadName);
-
-  //   //return threadName;
-  // };
+  //スレッド一覧に新規スレッド追加
+  const createThread = () => {
+    fetch("https://railway.bulletinboard.techtrain.dev/threads", {
+      method: "POST",
+      body: JSON.stringify({ title: thread }),
+    }).then((response) => {
+      if (!response.ok) {
+        console.log("bad");
+      } else {
+        //return response.json();
+        console.log("ok");
+      }
+    });
+  };
 
   return (
     <>
@@ -22,11 +28,9 @@ export const NewPage = () => {
         <h2>新規スレッド作成</h2>
         <p>スレッド名を入力して新規作成してください。</p>
         <div>
-          <form>
-            <input name="threadName" value={thread} type="text" placeholder="スレッド名を記入してください" />
-            <button type="submit" onClick={() => setThread(thread)}>
-              スレッド新規作成
-            </button>
+          <form onSubmit={createThread}>
+            <input name="threadName" defaultValue={thread} type="text" placeholder="スレッド名を記入してください" onChange={(e) => setThread(e.target.value)} />
+            <button type="submit">スレッド新規作成</button>
           </form>
         </div>
       </section>

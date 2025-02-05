@@ -1,6 +1,7 @@
 import { useRoutes } from "react-router-dom";
 import Home from "../../Home";
 import NewPage from "../../NewPage";
+import Thread from "../../Thread";
 
 const Route = () => {
   const routingConfig = [
@@ -11,6 +12,10 @@ const Route = () => {
     {
       path: "/newpage",
       Element: <NewPage />,
+    },
+    {
+      path: "/:threads/83fbbae8-fd46-4d93-9df7-7d8580e12941/posts",
+      Element: <Thread />,
     },
   ];
 

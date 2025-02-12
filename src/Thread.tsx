@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
 export const Thread = () => {
-  const [psts, setPsts] = useState([]);
   //スレッド一覧取得
+  const [psts, setPsts] = useState([]);
 
   //API Thread一覧取得
   useEffect(() => {
@@ -13,30 +13,28 @@ export const Thread = () => {
         if (!response.ok) {
           console.log("bad");
         } else {
-          return response.json();
           console.log(psts);
+          return response.json();
         }
       })
       .then((json) => {
         if (json) {
-          setPsts(json);
+          setPsts(json.posts);
         }
       })
       .catch((error) => console.error(error));
-    // };
   }, []);
 
   return (
     <>
       <section>
         <h1>thread</h1>
-        <section>
-          <ul className="threadlist">
-            {psts.map((pst, index) => (
-              <li key={index}>{pst.posts}</li>
-            ))}
-          </ul>
-        </section>
+
+        <ul className="threadlist">
+          {psts.map((pst, index) => (
+            <li key={index}>{pst.post}</li>
+          ))}
+        </ul>
       </section>
     </>
   );

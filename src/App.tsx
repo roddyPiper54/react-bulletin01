@@ -28,7 +28,6 @@ export const App = () => {
         }
       })
       .catch((error) => console.error(error));
-    // };
   }, []);
 
   return (
@@ -74,23 +73,6 @@ export const App = () => {
           </footer>
         </div>
       </BrowserRouter>
-      {/* <header>
-        <title>
-          <h1>React Bulletion 01</h1>
-        </title>
-      </header>
-      <main>
-        <section>
-          <h1 className="title">スレッド一覧</h1>
-          <p></p>
-          <ul className="threadlist">
-            {threads.map((thread, index) => (
-              <li key={index}>{thread.title}</li>
-            ))}
-          </ul>
-        </section>
-      </main>
-      <footer>footer</footer> */}
       {/* Routerコンポーネント内で定義したURLとそれに対応するコンポーネントへ切り替わるようになります。BrowserRouterコンポーネント外のコンポーネントへは切り替わることはりません。 */}
     </>
   );

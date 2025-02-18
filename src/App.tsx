@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Link, Route, Routes, useParams } from "react-router-dom";
+
 //import reactLogo from "./assets/react.svg";
 // import "./App.css";
 import "./components/route/Route";
 import { Home } from "./Home";
 import { NewPage } from "./NewPage";
 import { Thread } from "./Thread";
+import { UrlParameter } from "./UrlParameter";
 
 export const App = () => {
-  //const [count, setCount] = useState(0);
-
   const [threads, SetThreads] = useState([]);
+  // const [threads, SetThreads] = useState([]);
 
   //API Thread一覧取得
   useEffect(() => {
@@ -29,6 +30,9 @@ export const App = () => {
       })
       .catch((error) => console.error(error));
   }, []);
+
+  //パラメータ取得
+  //const { thread_id } = useParams();
 
   return (
     <>
@@ -57,15 +61,8 @@ export const App = () => {
                 <Route path="/" element={<Home threads={threads} />} />
                 <Route path="/newpage" element={<NewPage />} />
                 <Route path="/Thread" element={<Thread />} />
+                <Route path="/UrlParameter" element={<UrlParameter />} />
               </Routes>
-              {/* <h1 className="title">スレッド一覧</h1>
-              <section>
-                <ul className="threadlist">
-                  {threads.map((thread, index) => (
-                    <li key={index}>{thread.title}</li>
-                  ))}
-                </ul>
-              </section> */}
             </section>
           </main>
           <footer className="l-footer">

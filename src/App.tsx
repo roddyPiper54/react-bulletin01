@@ -7,8 +7,6 @@ import { Home } from "./Home";
 import { NewPage } from "./NewPage";
 
 export const App = () => {
-  //const [count, setCount] = useState(0);
-
   const [threads, SetThreads] = useState([]);
 
   //API Thread一覧取得
@@ -27,7 +25,6 @@ export const App = () => {
         }
       })
       .catch((error) => console.error(error));
-    // };
   }, []);
 
   return (
@@ -54,17 +51,9 @@ export const App = () => {
           <main>
             <section className="container">
               <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<Home threads={threads} />} />
                 <Route path="/newpage" element={<NewPage />} />
               </Routes>
-              <h1 className="title">スレッド一覧</h1>
-              <section>
-                <ul className="threadlist">
-                  {threads.map((thread, index) => (
-                    <li key={index}>{thread.title}</li>
-                  ))}
-                </ul>
-              </section>
             </section>
           </main>
           <footer className="l-footer">
@@ -72,24 +61,6 @@ export const App = () => {
           </footer>
         </div>
       </BrowserRouter>
-      {/* <header>
-        <title>
-          <h1>React Bulletion 01</h1>
-        </title>
-      </header>
-      <main>
-        <section>
-          <h1 className="title">スレッド一覧</h1>
-          <p></p>
-          <ul className="threadlist">
-            {threads.map((thread, index) => (
-              <li key={index}>{thread.title}</li>
-            ))}
-          </ul>
-        </section>
-      </main>
-      <footer>footer</footer> */}
-      {/* Routerコンポーネント内で定義したURLとそれに対応するコンポーネントへ切り替わるようになります。BrowserRouterコンポーネント外のコンポーネントへは切り替わることはりません。 */}
     </>
   );
 };

@@ -1,11 +1,14 @@
 {
-	"folders": [
-		{
-			"path": "../React-bulletin01"
-		},
-		{
-			"path": "../react-stations"
-		}
-	],
-	"settings": {}
+  "folders": [
+    {
+      "path": "../React-bulletin01"
+    },
+    {
+      "path": "../react-stations"
+    },
+    {
+      "path": "../_250218_react-bulletin01_src"
+    }
+  ],
+  "settings": {}
 }

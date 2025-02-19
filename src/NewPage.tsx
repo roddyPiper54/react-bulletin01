@@ -3,18 +3,18 @@ import { useState } from "react";
 export const NewPage = () => {
   const [thread, setThread] = useState("");
 
-  //スレッド一覧取得
-
   //スレッド一覧に新規スレッド追加
   const createThread = () => {
     fetch("https://railway.bulletinboard.techtrain.dev/threads", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json", // データ形式を JSON として送る
+      },
       body: JSON.stringify({ title: thread }),
     }).then((response) => {
       if (!response.ok) {
         console.log("bad");
       } else {
-        //return response.json();
         console.log("ok");
       }
     });
@@ -23,7 +23,6 @@ export const NewPage = () => {
   return (
     <>
       <h1>newPage</h1>
-
       <section>
         <h2>新規スレッド作成</h2>
         <p>スレッド名を入力して新規作成してください。</p>

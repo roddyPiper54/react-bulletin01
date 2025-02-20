@@ -8,9 +8,9 @@ export const NewPage = () => {
     fetch("https://railway.bulletinboard.techtrain.dev/threads", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json", // データ形式を JSON として送る
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ title: thread }),
+      body: JSON.stringify({ title: thread }), // データ形式をJSON化して送信
     }).then((response) => {
       if (!response.ok) {
         console.log("bad");
@@ -22,14 +22,15 @@ export const NewPage = () => {
 
   return (
     <>
-      <h1>newPage</h1>
+      <h1>新規スレッド作成</h1>
       <section>
-        <h2>新規スレッド作成</h2>
         <p>スレッド名を入力して新規作成してください。</p>
         <div>
-          <form onSubmit={createThread}>
+          <form onSubmit={createThread} className="threadForm">
             <input name="threadName" defaultValue={thread} type="text" placeholder="スレッド名を記入してください" onChange={(e) => setThread(e.target.value)} />
-            <button type="submit">スレッド新規作成</button>
+            <button type="submit" className="submitBtn">
+              スレッド作成
+            </button>
           </form>
         </div>
       </section>

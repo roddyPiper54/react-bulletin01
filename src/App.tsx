@@ -33,14 +33,14 @@ export const App = () => {
         <div>
           <header className="l-header">
             <div className="container">
-              <div className="logo">React Bulletion 01</div>
+              <div className="logo">React掲示板</div>
             </div>
           </header>
           <nav className="gNavWrapper">
             <div className="container">
               <ul className="gNav">
                 <li>
-                  <Link to="/">home</Link>
+                  <Link to="/">Home</Link>
                 </li>
                 <li>
                   <Link to="/newpage">newpage</Link>
@@ -56,9 +56,6 @@ export const App = () => {
               </Routes>
             </section>
           </main>
-          <footer className="l-footer">
-            <div className="container">footer</div>
-          </footer>
         </div>
       </BrowserRouter>
     </>

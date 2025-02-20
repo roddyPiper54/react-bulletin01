@@ -1,11 +1,10 @@
-//Propsインターフェイスで引数の型定義
 type Props = {
-  //component propsの型
+  //PropsインターフェイスでHome関数の引数型定義
   threads: { title: string }[]; //titleプロパティを持つオブジェクトの配列
 };
 
 export const Home = (props: Props) => {
-  const { threads } = props;
+  const { threads } = props; //スレッド一覧配列をpropsでApp.tsxから渡す
 
   return (
     <>

@@ -1,10 +1,26 @@
-type Props = {
-  //PropsインターフェイスでHome関数の引数型定義
-  threads: { title: string }[]; //titleプロパティを持つオブジェクトの配列
-};
+import { useEffect, useState } from "react";
 
-export const Home = (props: Props) => {
-  const { threads } = props; //スレッド一覧配列をpropsでApp.tsxから渡す
+export const Home = () => {
+  //コンポーネントレンダリングするタイミングで処理させる場合は、state, fetch関数をまとめる
+  const [threads, SetThreads] = useState([]);
+
+  //API Thread一覧取得
+  useEffect(() => {
+    fetch("https://railway.bulletinboard.techtrain.dev/threads")
+      .then((response) => {
+        if (!response.ok) {
+          console.log("bad");
+        } else {
+          return response.json();
+        }
+      })
+      .then((json) => {
+        if (json) {
+          SetThreads(json);
+        }
+      })
+      .catch((error) => console.error(error));
+  }, []);
 
   return (
     <>

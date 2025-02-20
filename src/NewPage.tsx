@@ -4,7 +4,9 @@ export const NewPage = () => {
   const [thread, setThread] = useState("");
 
   //スレッド一覧に新規スレッド追加
-  const createThread = () => {
+  const createThread = (e) => {
+    e.preventDefault(); //submitのデフォルトの処理を封じ込める
+
     fetch("https://railway.bulletinboard.techtrain.dev/threads", {
       method: "POST",
       headers: {

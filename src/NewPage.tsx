@@ -18,6 +18,9 @@ export const NewPage = () => {
         console.log("bad");
       } else {
         console.log("ok");
+
+        window.alert(`${thread}スレッドを作成しました。`);
+        window.location.href = "/";
       }
     });
   };

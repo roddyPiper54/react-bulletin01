@@ -1,5 +1,4 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
-import "./components/route/Route";
 import { Home } from "./Home";
 import { NewPage } from "./NewPage";
 
@@ -20,7 +19,7 @@ export const App = () => {
                   <Link to="/">Home</Link>
                 </li>
                 <li>
-                  <Link to="/newpage">newpage</Link>
+                  <Link to="/threads/new">newpage</Link>
                 </li>
               </ul>
             </div>
@@ -29,7 +28,7 @@ export const App = () => {
             <section className="container">
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/newpage" element={<NewPage />} />
+                <Route path="/threads/new" element={<NewPage />} />
               </Routes>
             </section>
           </main>

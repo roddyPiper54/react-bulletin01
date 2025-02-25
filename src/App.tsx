@@ -1,12 +1,12 @@
 import { BrowserRouter, Link, Route, Routes, useParams } from "react-router-dom";
 import { Home } from "./Home";
 import { NewPage } from "./NewPage";
-import { Thread } from "./Thread";
 import { UrlParameter } from "./UrlParameter";
 
 export const App = () => {
   //スレッドid
   const { thread_id } = useParams();
+  console.log(thread_id);
 
   return (
     <>
@@ -26,9 +26,6 @@ export const App = () => {
                 <li>
                   <Link to="/threads/new">newpage</Link>
                 </li>
-                <li>
-                  <Link to="/:threads/dummy">dummy</Link>
-                </li>
               </ul>
             </div>
           </nav>
@@ -37,7 +34,6 @@ export const App = () => {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/threads/new" element={<NewPage />} />
-                <Route path="/:threads/dummy" element={<Thread />} />
                 <Route path="/:threads/:thread_id" element={<UrlParameter />} />
               </Routes>
             </section>

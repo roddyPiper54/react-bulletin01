@@ -11,22 +11,23 @@ ul {
 
 /* layout */
 .l-header {
-  background-color: #deebec;
-  background-color: #bed9dd;
-  background-color: #aecfd0;
-  background-color: #73b3b2;
-  background-color: #3c979f;
+  background-color: #DEEBEC;
+  background-color: #BED9DD;
+  background-color: #AECFD0;
+  background-color: #73B3B2;
+  background-color: #3C979F;
   padding: 10px;
 }
 
 .l-footer {
-  background-color: #ddd;
+  background-color: #DDD;
   padding: 5px 0;
 }
 
 /* component */
 .logo {
-  color: #fff;
+  color: #FFF;
+  font-size: 28px;
   font-weight: bold;
 }
 .title {
@@ -39,10 +40,10 @@ ul {
 }
 
 .gNavWrapper {
-  background-color: #73b3b2;
+  background-color: #73B3B2;
 }
 .gNav {
-  color: #fff;
+  color: #FFF;
   display: flex;
   margin: 0;
 }
@@ -50,13 +51,13 @@ ul {
   padding: 0;
 }
 .gNav > li > a {
-  color: #fff;
+  color: #FFF;
   display: inline-block;
   padding: 5px 10px;
   text-decoration: none;
 }
 .gNav > li > a:hover {
-  background-color: #aecfd0;
+  background-color: #AECFD0;
 }
 
 .threadlist {
@@ -65,8 +66,8 @@ ul {
 }
 
 .threadlist > li {
-  background-color: #aecfd0;
-  border: solid 1px #73b3b2;
+  background-color: #AECFD0;
+  border: solid 1px #73B3B2;
   border-radius: 4px;
   padding: 8px;
 }
@@ -85,15 +86,15 @@ ul {
   margin-left: 20px;
 }
 .submitBtn {
-  background-color: #3c979f;
-  border: solid 1px #3c979f;
+  background-color: #3C979F;
+  border: solid 1px #3C979F;
   border-radius: 4px;
-  color: #fff;
+  color: #FFF;
   cursor: pointer;
   padding: 8px 16px;
 }
 .submitBtn:hover {
-  background-color: #73b3b2;
-  border: solid 1px #73b3b2;
-  color: #fff;
+  background-color: #73B3B2;
+  border: solid 1px #73B3B2;
+  color: #FFF;
 }

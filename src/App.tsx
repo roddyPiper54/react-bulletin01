@@ -34,7 +34,7 @@ export const App = () => {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/threads/new" element={<NewPage />} />
-                <Route path="/:threads/:thread_id" element={<UrlParameter />} />
+                <Route path="/threads/:thread_id" element={<UrlParameter />} />
               </Routes>
             </section>
           </main>

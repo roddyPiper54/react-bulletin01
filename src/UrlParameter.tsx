@@ -3,6 +3,9 @@ import { useParams } from "react-router-dom";
 export const UrlParameter = () => {
   //スレッド一覧取得
   const [psts, setPsts] = useState([]);
+  //投稿一覧
+  const [pst, setPst] = useState([]);
+
   //URLパラメーター
   const { thread_id } = useParams();
 
@@ -27,6 +30,18 @@ export const UrlParameter = () => {
       .catch((error) => console.error(error));
   }, []);
 
+  //スレッド投稿
+  const postThread = () => {
+    //fetchAPIを使い投稿をPOSS
+    fetch(`https://railway.bulletinboard.techtrain.dev/threads/${thread_id}/posts`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ post: pst }), //データをJSON化して送信
+    });
+  };
+
   return (
     <>
       <section>
@@ -37,6 +52,11 @@ export const UrlParameter = () => {
             <li key={index}>{pst.post}</li>
           ))}
         </ul>
+
+        <label htmlFor="">
+          <input type="text" name="" id="" />
+          <button type="submit">投稿</button>
+        </label>
       </section>
     </>
   );

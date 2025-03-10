@@ -11,9 +11,11 @@ export const UrlParameter = () => {
 
   //API Thread一覧取得
   useEffect(() => {
+    //最初に一致した:を""に
+
     //スレッドの投稿一覧取得
     //fetchで対象idの投稿一覧取得
-    fetch(`https://railway.bulletinboard.techtrain.dev/threads/${thread_id}/posts`)
+    fetch(`https://railway.bulletinboard.techtrain.dev/threads/${thread_id.replace(/:/, "")}/posts`)
       .then((response) => {
         if (!response.ok) {
           console.log("bad");
@@ -31,15 +33,31 @@ export const UrlParameter = () => {
   }, []);
 
   //スレッド投稿
-  const postThread = () => {
-    //fetchAPIを使い投稿をPOSS
-    fetch(`https://railway.bulletinboard.techtrain.dev/threads/${thread_id}/posts`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ post: pst }), //データをJSON化して送信
-    });
+
+  const postThread = (e) => {
+    e.preventDefault();
+
+    if (thread_id) {
+      //fetchAPIを使い投稿をPOSS
+      fetch(`https://railway.bulletinboard.techtrain.dev/threads/${thread_id.replace(/:/, "")}/posts`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ post: pst }), //データをJSON化して送信
+      }).then((response) => {
+        if (!response.ok) {
+          console.log("bad");
+        } else {
+          console.log("ok");
+
+          window.alert(`${pst}投稿しました。`);
+          //window.location.href = "/";
+        }
+      });
+    } else {
+      console.log("thread_idがないです");
+    }
   };
 
   return (
@@ -53,10 +71,12 @@ export const UrlParameter = () => {
           ))}
         </ul>
 
-        <label htmlFor="">
-          <input type="text" name="" id="" />
-          <button type="submit">投稿</button>
-        </label>
+        <form onSubmit={postThread} className="threadForm">
+          <input type="text" name="" id="" onChange={(e) => setPst(e.target.value)} />
+          <button type="submit" className="submitBtn">
+            投稿
+          </button>
+        </form>
       </section>
     </>
   );

@@ -1,35 +1,34 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 export const UrlParameter = () => {
-  //スレッド一覧取得
-  const [threads, setThreads] = useState([]);
-  //投稿一覧
-  //const [posts, setPost] = useState([]);
+  //投稿一覧取得
+  const [postList, setPostList] = useState([]);
+  //投稿
+  const [post, setPost] = useState([]);
   //URLパラメーター
   const { thread_id } = useParams();
 
-  //API Thread一覧取得
-  //useEffect(() => {
-  //onst getThreads = () => {
-  //fetchで対象idの投稿一覧取得 //最初に一致した:を""に
-  fetch(`https://railway.bulletinboard.techtrain.dev/threads/${thread_id.replace(/:/, "")}/posts`)
-    .then((response) => {
-      if (!response.ok) {
-        console.log("bad");
-      } else {
-        console.log(threads);
-        return response.json();
-      }
-    })
-    .then((json) => {
-      if (json) {
-        setThreads(json.posts);
-        //setPosts(json.posts);
-      }
-    })
-    .catch((error) => console.error(error));
-  //};
-  //}, []);
+  //API 投稿一覧取得
+  useEffect(() => {
+    //const getThreads = () => {
+    //fetchで対象idの投稿一覧取得 //最初に一致した:を""に
+    fetch(`https://railway.bulletinboard.techtrain.dev/threads/${thread_id.replace(/:/, "")}/posts`)
+      .then((response) => {
+        if (!response.ok) {
+          console.log("bad");
+        } else {
+          console.log(postList);
+          return response.json();
+        }
+      })
+      .then((json) => {
+        if (json) {
+          setPostList(json.posts);
+        }
+      })
+      .catch((error) => console.error(error));
+    // };
+  }, [post]);
 
   //スレッド投稿
   const postThread = (e) => {
@@ -42,14 +41,15 @@ export const UrlParameter = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ post: posts }), //データをJSON化して送信
+        body: JSON.stringify({ post: post }), //データをJSON化して送信
       }).then((response) => {
         if (!response.ok) {
           console.log("bad");
         } else {
-          console.log("ok");
+          window.alert(`${post}投稿しました。`);
 
-          window.alert(`${posts}投稿しました。`);
+          //入力欄を空にする
+          setPost("");
         }
       });
     } else {
@@ -57,19 +57,22 @@ export const UrlParameter = () => {
     }
   };
 
+  //投稿文
+  const handlePost = (e) => setPost(e.target.value);
+
   return (
     <>
       <section>
         <h1>thread</h1>
         <p>パラメーターは{thread_id}です</p>
         <ul className="threadlist">
-          {threads.map((thread, index) => (
-            <li key={index}>{thread.post}</li>
+          {postList.map((pst, index) => (
+            <li key={index}>{pst.post}</li>
           ))}
         </ul>
 
         <form onSubmit={postThread} className="threadForm">
-          <input type="text" name="" id="" onChange={(e) => setPost(e.target.value)} />
+          <input type="text" value={post} name="" id="" onChange={handlePost} />
           <button type="submit" className="submitBtn">
             投稿
           </button>

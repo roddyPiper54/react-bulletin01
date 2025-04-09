@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-export const NewPage = () => {
+//名前かえる
+export const NewThread = () => {
   const [thread, setThread] = useState("");
 
   //スレッド一覧に新規スレッド追加
@@ -43,4 +44,4 @@ export const NewPage = () => {
   );
 };
 
-export default NewPage;
+export default NewThread;

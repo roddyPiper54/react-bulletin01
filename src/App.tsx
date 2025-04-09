@@ -1,7 +1,7 @@
 import { BrowserRouter, Link, Route, Routes, useParams } from "react-router-dom";
 import { Home } from "./Home";
-import { NewPage } from "./NewPage";
-import { UrlParameter } from "./UrlParameter";
+import { NewThread } from "./NewThread";
+import { Posts } from "./Posts";
 
 export const App = () => {
   //スレッドid
@@ -33,8 +33,9 @@ export const App = () => {
             <section className="container">
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/threads/new" element={<NewPage />} />
-                <Route path="/threads/:thread_id" element={<UrlParameter />} />
+                <Route path="/threads/new" element={<NewThread />} />
+                <Route path="/threads/:thread_id" element={<Posts />} />
+                {/* Routeコンポーネントのpath属性。ルート定義。:~~~ はreact routerの動的パラメータ */}
               </Routes>
             </section>
           </main>

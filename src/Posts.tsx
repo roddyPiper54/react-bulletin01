@@ -1,18 +1,19 @@
+//component名を変える。 Posts
+
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-export const UrlParameter = () => {
-  //投稿一覧取得
+export const Posts = () => {
+  //投稿一覧
   const [postList, setPostList] = useState([]);
   //投稿
   const [post, setPost] = useState([]);
   //URLパラメーター
-  const { thread_id } = useParams();
+  const { thread_id } = useParams(); //:thread_id パラメータ名で取得できる。
 
-  //API 投稿一覧取得
-  useEffect(() => {
-    //const getThreads = () => {
+  //投稿一覧取得
+  const getPosts = () => {
     //fetchで対象idの投稿一覧取得 //最初に一致した:を""に
-    fetch(`https://railway.bulletinboard.techtrain.dev/threads/${thread_id.replace(/:/, "")}/posts`)
+    fetch(`https://railway.bulletinboard.techtrain.dev/threads/${thread_id}/posts`) //:は元々ない！
       .then((response) => {
         if (!response.ok) {
           console.log("bad");
@@ -27,8 +28,12 @@ export const UrlParameter = () => {
         }
       })
       .catch((error) => console.error(error));
-    // };
-  }, [post]);
+  };
+
+  //初回レンダリング時に投稿一覧取得
+  useEffect(() => {
+    getPosts();
+  }, []);
 
   //スレッド投稿
   const postThread = (e) => {
@@ -36,7 +41,7 @@ export const UrlParameter = () => {
 
     if (thread_id) {
       //fetchAPIを使い投稿をPOSS
-      fetch(`https://railway.bulletinboard.techtrain.dev/threads/${thread_id.replace(/:/, "")}/posts`, {
+      fetch(`https://railway.bulletinboard.techtrain.dev/threads/${thread_id}/posts`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,8 +53,11 @@ export const UrlParameter = () => {
         } else {
           window.alert(`${post}投稿しました。`);
 
-          //入力欄を空にする
+          //入力欄を空にする postを""にする  一覧取得useEffectの依存配列のstate(post)が変更
           setPost("");
+
+          //②投稿が成功したタイミングでもgetPostを実行
+          getPosts();
         }
       });
     } else {
@@ -82,4 +90,4 @@ export const UrlParameter = () => {
   );
 };
 
-export default UrlParameter;
+export default Posts;

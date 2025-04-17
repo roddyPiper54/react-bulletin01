@@ -9,6 +9,7 @@ export const Posts = () => {
   const [post, setPost] = useState([]);
   //URLパラメーター
   const { thread_id } = useParams(); //:thread_id パラメータ名で取得できる。
+  console.log(thread_id);
 
   //投稿一覧取得
   const getPosts = () => {

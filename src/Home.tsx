@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { App } from "./App";
 
 export const Home = () => {
   //コンポーネントレンダリングするタイミングで処理させる場合は、state, fetch関数をまとめる
@@ -28,7 +30,9 @@ export const Home = () => {
       <section>
         <ul className="threadlist">
           {threads.map((thread, index) => (
-            <li key={index}>{thread.title}</li>
+            <li key={index}>
+              <Link to={`/threads/${thread.id}`}>{thread.title}</Link>
+            </li>
           ))}
         </ul>
       </section>

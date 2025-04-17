@@ -35,7 +35,13 @@ export const App = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/threads/new" element={<NewThread />} />
                 <Route path="/threads/:thread_id" element={<Posts />} />
-                {/* Routeコンポーネントのpath属性。ルート定義。:~~~ はreact routerの動的パラメータ */}
+                  {/*
+                  Routeコンポーネントのpath属性。動的セグメントのルート定義(:~~形式で定義)。
+                  :thread_id →react routerの動的パラメータ
+                  動的セグメントの値はURLパラメータとしてキャプチャ→useParameterでフックして活用可能
+                  urlが/threads/777なら,
+                  uraParamsはthread_id="777"を返却
+                  */}
               </Routes>
             </section>
           </main>
